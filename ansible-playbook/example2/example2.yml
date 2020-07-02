@@ -1,0 +1,14 @@
+---
+- name: This is a role example
+  hosts: localhost
+
+  vars:
+    ext_var: "pippo"
+    somelist:
+        - item1
+        - item2
+
+  roles:
+    - role: write_ts
+      loop: "{{ somelist }}"
+  

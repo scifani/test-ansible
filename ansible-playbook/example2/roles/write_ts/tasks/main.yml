@@ -1,0 +1,24 @@
+---
+
+- name: Print pwd
+  shell: pwd
+  register: pwd_var
+
+- debug:
+    var: pwd_var
+
+- debug:
+    msg: "ext_var={{ ext_var }}"
+
+- debug:
+    msg: "somelist={{ somelist }}"
+
+- name: Verify variable
+  assert:
+    that:
+      - ts_file is defined
+
+- name: Create a temporary timestamp file
+  shell:
+    cmd: echo $(date) > "{{ ts_file }}"
+    chdir: /tmp

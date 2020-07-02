@@ -1,0 +1,26 @@
+---
+- name: This is a task example
+  hosts: localhost
+
+  vars:
+    
+    somelist:
+        - name: item-1
+          description: somedesc
+        - name: item-2
+          description: somedesc-2
+
+ 
+  tasks:
+    - name: Create a temporary timestamp file
+      shell:
+        cmd: echo "$(date) -- {{ item.name }} [{{ item.description }}]" >> {{ ts_file }}
+        chdir: /tmp
+      loop: "{{ somelist }}"
+
+    - name: Optional task based on opt_var definition
+      shell:
+        cmd: echo "{{ opt_var }}" > opt_var.txt
+        chdir: /tmp
+      when: opt_var is defined
+
