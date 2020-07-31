@@ -1,0 +1,7 @@
+
+somelist:
+  - name: item1
+    description: somedesc1
+  - name: item2
+    description: somedesc2
+
