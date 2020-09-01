@@ -1,0 +1,13 @@
+
+hosts:
+  vars:
+    ansible_host:           127.0.0.1
+
+    ansible_user:           simo
+    ansible_ssh_pass:       simo
+    ansible_become_pass:    simo
+
+    ansible_port:           22
+    ansible_connection:     ssh
+    ansible_become_user:    simo
+    ansible_become_method:  sudo

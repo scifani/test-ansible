@@ -1,5 +1,10 @@
 # test-ansible
-example:
-'''
-./ansible_run example1/write_ts.yml -i inventory/local -e "ts_file=pluto.txt"
-'''
+
+Ansible playground based on the [microsoft/ansible|https://hub.docker.com/r/microsoft/ansible] docker image.
+
+
+To run a playbook:
+
+```
+./run-playbook.sh playbooks/hello_world/hello_world.yml
+```

@@ -1,0 +1,24 @@
+---
+- name: This is a test of grabbing a list variable from python script
+  hosts: localhost
+  tasks:
+    - debug:
+        var: playbook_dir
+
+    - name: Run python script
+      shell: python list_return.py
+      args:
+        chdir: "{{ playbook_dir }}/scripts"
+      register: shell_result
+
+    - debug:
+        var: shell_result.stdout_lines
+
+    - set_fact:
+        list_var: "{{ shell_result.stdout }}"
+        cacheable: yes
+
+    - name: Loop over list
+      shell: echo "{{ item }}"
+      loop: "{{ list_var }}"
+
