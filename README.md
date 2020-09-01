@@ -1,6 +1,6 @@
-# test-ansible
+# Test-Ansible
 
-Ansible playground based on the [microsoft/ansible|https://hub.docker.com/r/microsoft/ansible] docker image.
+Ansible playground based on the [microsoft/ansible](https://hub.docker.com/r/microsoft/ansible) docker image.
 
 
 To run a playbook:
