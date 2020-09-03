@@ -1,0 +1,16 @@
+---
+- name: This is a string escape example
+  hosts: localhost
+  vars:
+    database_user: root
+    database_pwd: root
+  tasks:
+    - name: copy string to file with quote
+      copy:
+        content: "GRANT ALL PRIVILEGES ON *.* TO '{{ database_user }}'@'%' IDENTIFIED BY '{{ database_pwd }}' WITH GRANT OPTION; FLUSH PRIVILEGES;"
+        dest: /tmp/string_escapes_quote.txt
+
+    - name: copy string to file with lf
+      copy:
+        content: "[client]\nuser = {{ database_user }}\npassword = {{ database_pwd }}"
+        dest: /tmp/string_escapes_lf.txt
