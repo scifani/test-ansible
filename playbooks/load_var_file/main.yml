@@ -1,0 +1,25 @@
+---
+- name: This is a hello-world example
+  hosts: localhost
+
+  vars_files:
+    - vars/hello.yml
+
+  tasks:
+    - debug:
+        var: varsfile
+        
+    - name: Load a variable file, or a default if not found. Using free-form to specify the file.
+      include_vars: "{{ item }}"
+      with_first_found:
+        - "{{ varsfile }}"
+        - "vars/hello.yml"
+
+    - name: Delete file
+      shell: rm /tmp/testfile.txt
+
+    - name: Create a file called '/tmp/testfile.txt' with the content 'hello world'.
+      copy:
+        content: "{{ msg }}"
+        dest: /tmp/testfile.txt
+
